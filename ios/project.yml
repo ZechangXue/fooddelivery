@@ -1,0 +1,38 @@
+name: FoodDelivery
+options:
+  bundleIdPrefix: com.zechangxue
+  deploymentTarget:
+    iOS: '16.0'
+settings:
+  base:
+    SWIFT_VERSION: '5.0'
+    TARGETED_DEVICE_FAMILY: '1,2'
+    CODE_SIGNING_ALLOWED: NO
+    MARKETING_VERSION: 1.0.0
+    CURRENT_PROJECT_VERSION: 1
+targets:
+  FoodDelivery:
+    type: application
+    platform: iOS
+    sources: [FoodDelivery]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.zechangxue.fooddelivery
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_FILE: FoodDelivery/Info.plist
+  FoodDeliveryTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [FoodDeliveryTests]
+    dependencies:
+      - target: FoodDelivery
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  FoodDelivery:
+    build:
+      targets:
+        FoodDelivery: all
+    test:
+      targets: [FoodDeliveryTests]

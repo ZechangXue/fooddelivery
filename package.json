@@ -1,0 +1,1 @@
+{"name":"wembley-delivery-ios","private":true,"version":"1.0.0","scripts":{"test":"node tests/paste-fourteen.test.cjs && node tests/paste-four-customers.test.cjs && node tests/wechat-mobile.test.cjs && node --test tests/native-bridge.test.cjs"},"devDependencies":{"typescript":"5.9.3"}}

@@ -1,0 +1,8 @@
+node_modules/
+build/
+DerivedData/
+*.ipa
+*.xcresult
+ios/*.xcodeproj/
+.DS_Store
+.env*
