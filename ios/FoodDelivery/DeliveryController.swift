@@ -56,6 +56,9 @@ final class DeliveryController: UIViewController, WKNavigationDelegate, WKUIDele
     }
     @objc private func help() {
         let alert = UIAlertController(title: "步送 iOS", message: "与网页共用同一个账户及云端数据。首次请登录原来的账户。配送时保持本应用在前台；锁屏或切换应用会暂停实时同步。\n\n请勿在有未保存修改时刷新。若第三方登录不支持内嵌浏览器，请使用邮箱登录，或先用 Safari 中的原网页继续配送。", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "应用内 Safari 兼容模式", style: .default) { _ in
+            self.present(SFSafariViewController(url: AppPolicy.home), animated: true)
+        })
         alert.addAction(UIAlertAction(title: "打开 Safari 网页", style: .default) { _ in UIApplication.shared.open(AppPolicy.home) })
         alert.addAction(UIAlertAction(title: "关闭", style: .cancel))
         present(alert, animated: true)
