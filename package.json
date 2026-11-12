@@ -3,9 +3,11 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "test": "node tests/paste-import.test.cjs && node tests/paste-fourteen.test.cjs && node tests/paste-four-customers.test.cjs && node tests/wechat-mobile.test.cjs && node --test tests/native-bridge.test.cjs"
+    "test": "node tests/paste-import.test.cjs && node tests/paste-fourteen.test.cjs && node tests/paste-four-customers.test.cjs && node tests/wechat-mobile.test.cjs && node --test tests/native-bridge.test.cjs && node tests/packing-summary.test.cjs && node tests/route-priority.test.mjs",
+    "build:engine": "node scripts/build-engine.cjs"
   },
   "devDependencies": {
+    "esbuild": "^0.25.12",
     "typescript": "5.9.3"
   }
 }

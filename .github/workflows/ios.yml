@@ -1,7 +1,7 @@
 name: Build iOS IPA
 on:
   push:
-    branches: [main]
+    branches: [main, codex/native-ios-ui]
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,6 +17,7 @@ jobs:
           cache: npm
       - run: npm ci --ignore-scripts
       - run: npm test
+      - run: npm run build:engine
       - name: Install XcodeGen
         run: brew install xcodegen
       - name: Generate Xcode project and icon
@@ -30,7 +31,7 @@ jobs:
       - name: iOS simulator tests
         run: |
           set -o pipefail
-          xcodebuild test -project ios/FoodDelivery.xcodeproj -scheme FoodDelivery -destination "platform=iOS Simulator,id=$SIMULATOR_ID" -derivedDataPath build/simulator -resultBundlePath build/Tests.xcresult CODE_SIGNING_ALLOWED=NO | tee build-tests.log
+          xcodebuild test -parallel-testing-enabled NO -project ios/FoodDelivery.xcodeproj -scheme FoodDelivery -destination "platform=iOS Simulator,id=$SIMULATOR_ID" -derivedDataPath build/simulator -resultBundlePath build/Tests.xcresult CODE_SIGNING_ALLOWED=NO | tee build-tests.log
       - name: Build real-device app
         run: |
           set -o pipefail

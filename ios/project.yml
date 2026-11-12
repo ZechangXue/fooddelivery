@@ -8,8 +8,8 @@ settings:
     SWIFT_VERSION: '5.0'
     TARGETED_DEVICE_FAMILY: '1,2'
     CODE_SIGNING_ALLOWED: NO
-    MARKETING_VERSION: 1.0.0
-    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 2.0.0
+    CURRENT_PROJECT_VERSION: 2
 targets:
   FoodDelivery:
     type: application
@@ -29,10 +29,19 @@ targets:
     settings:
       base:
         GENERATE_INFOPLIST_FILE: YES
+  FoodDeliveryUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [FoodDeliveryUITests]
+    dependencies:
+      - target: FoodDelivery
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
 schemes:
   FoodDelivery:
     build:
       targets:
         FoodDelivery: all
     test:
-      targets: [FoodDeliveryTests]
+      targets: [FoodDeliveryTests, FoodDeliveryUITests]

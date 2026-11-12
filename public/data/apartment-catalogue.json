@@ -1,0 +1,1229 @@
+{
+  "updated": "2026-09-24",
+  "scope": "Downloaded Wembley Park map bounds; named residential buildings and student residences. Campus-only entries are not individual entrance surveys.",
+  "buildings": [
+    {
+      "id": 27854111,
+      "name": "The Assembly at Wembley Central",
+      "group": "",
+      "aliases": [
+        "The Assembly at Wembley Central",
+        "Assembly at Wembley Central"
+      ],
+      "address": "",
+      "source": "https://www.openstreetmap.org/way/27854111"
+    },
+    {
+      "id": 27854118,
+      "name": "Lodge Court",
+      "group": "",
+      "aliases": [
+        "Lodge Court"
+      ],
+      "address": "",
+      "source": "https://www.openstreetmap.org/way/27854118"
+    },
+    {
+      "id": 198080027,
+      "name": "WEM Tower",
+      "group": "",
+      "aliases": [
+        "WEM Tower"
+      ],
+      "address": "1, Harrow Road, HA9 6FF",
+      "source": "https://www.openstreetmap.org/way/198080027"
+    },
+    {
+      "id": 224160438,
+      "name": "Manor Court",
+      "group": "",
+      "aliases": [
+        "Manor Court"
+      ],
+      "address": "Central Square, HA9 7AX",
+      "source": "https://www.openstreetmap.org/way/224160438"
+    },
+    {
+      "id": 224801928,
+      "name": "Dandi Wembley",
+      "group": "",
+      "aliases": [
+        "Dandi Wembley",
+        "Dandi",
+        "New York House",
+        "York House",
+        "New York",
+        "York"
+      ],
+      "address": "2, Stadium Way",
+      "source": "https://dandi.com/cityliving/dandi-wembley/"
+    },
+    {
+      "id": 234983664,
+      "name": "Blackberry Court",
+      "group": "",
+      "aliases": [
+        "Blackberry Court"
+      ],
+      "address": "326a, Preston Road, HA3 0QH",
+      "source": "https://www.openstreetmap.org/way/234983664"
+    },
+    {
+      "id": 247889202,
+      "name": "Lily House",
+      "group": "",
+      "aliases": [
+        "Lily House",
+        "Lily"
+      ],
+      "address": "London Road",
+      "source": "https://www.openstreetmap.org/way/247889202"
+    },
+    {
+      "id": 258988502,
+      "name": "Central Apartments",
+      "group": "",
+      "aliases": [
+        "Central Apartments",
+        "Central"
+      ],
+      "address": "455, High Road, HA9 7AF",
+      "source": "https://www.openstreetmap.org/way/258988502"
+    },
+    {
+      "id": 279611400,
+      "name": "Station Court",
+      "group": "",
+      "aliases": [
+        "Station Court"
+      ],
+      "address": "",
+      "source": "https://www.openstreetmap.org/way/279611400"
+    },
+    {
+      "id": 329957990,
+      "name": "Woodcock Court",
+      "group": "",
+      "aliases": [
+        "Woodcock Court"
+      ],
+      "address": "",
+      "source": "https://www.openstreetmap.org/way/329957990"
+    },
+    {
+      "id": 542239025,
+      "name": "Wembley Park Gate",
+      "group": "",
+      "aliases": [
+        "Wembley Park Gate",
+        "Marathon House",
+        "Marathon"
+      ],
+      "address": "33, Olympic Way, HA9 0GE",
+      "source": "https://www.openstreetmap.org/way/542239025"
+    },
+    {
+      "id": 730996633,
+      "name": "Sylvia Court",
+      "group": "",
+      "aliases": [
+        "Sylvia Court"
+      ],
+      "address": "Harrow Road, HA9 6HS",
+      "source": "https://www.openstreetmap.org/way/730996633"
+    },
+    {
+      "id": 730996634,
+      "name": "Sylvia Court",
+      "group": "",
+      "aliases": [
+        "Sylvia Court"
+      ],
+      "address": "Harrow Road, HA9 6HS",
+      "source": "https://www.openstreetmap.org/way/730996634"
+    },
+    {
+      "id": 730996635,
+      "name": "Sylvia Court",
+      "group": "",
+      "aliases": [
+        "Sylvia Court"
+      ],
+      "address": "Harrow Road, HA9 6HS",
+      "source": "https://www.openstreetmap.org/way/730996635"
+    },
+    {
+      "id": 730996636,
+      "name": "Sylvia Court",
+      "group": "",
+      "aliases": [
+        "Sylvia Court"
+      ],
+      "address": "Harrow Road, HA9 6HS",
+      "source": "https://www.openstreetmap.org/way/730996636"
+    },
+    {
+      "id": 730996654,
+      "name": "Sylvia Court",
+      "group": "",
+      "aliases": [
+        "Sylvia Court"
+      ],
+      "address": "Harrow Road, HA9 6HS",
+      "source": "https://www.openstreetmap.org/way/730996654"
+    },
+    {
+      "id": 737722242,
+      "name": "Gracie Fields House",
+      "group": "",
+      "aliases": [
+        "Gracie Fields House",
+        "Gracie Fields"
+      ],
+      "address": "159, Harrow Road, HA9 6DN",
+      "source": "https://www.openstreetmap.org/way/737722242"
+    },
+    {
+      "id": 963195122,
+      "name": "ARK Wembley",
+      "group": "",
+      "aliases": [
+        "ARK Wembley"
+      ],
+      "address": "30, First Way, HA9 0PE",
+      "source": "https://www.openstreetmap.org/way/963195122"
+    },
+    {
+      "id": 963195127,
+      "name": "Pinnacle Tower",
+      "group": "",
+      "aliases": [
+        "Pinnacle Tower"
+      ],
+      "address": "Fulton Road",
+      "source": "https://www.openstreetmap.org/way/963195127"
+    },
+    {
+      "id": 973113932,
+      "name": "Brill House",
+      "group": "",
+      "aliases": [
+        "Brill House",
+        "Brill"
+      ],
+      "address": "NW10 0AP",
+      "source": "https://www.openstreetmap.org/way/973113932"
+    },
+    {
+      "id": 1153285989,
+      "name": "Ennerdale Court",
+      "group": "",
+      "aliases": [
+        "Ennerdale Court"
+      ],
+      "address": "Windermere Avenue",
+      "source": "https://www.openstreetmap.org/way/1153285989"
+    },
+    {
+      "id": 1153285992,
+      "name": "Mariel House",
+      "group": "",
+      "aliases": [
+        "Mariel House",
+        "Mariel"
+      ],
+      "address": "Windermere Avenue",
+      "source": "https://www.openstreetmap.org/way/1153285992"
+    },
+    {
+      "id": 1228283264,
+      "name": "Pitt House",
+      "group": "",
+      "aliases": [
+        "Pitt House",
+        "Pitt"
+      ],
+      "address": "NW10 0DA",
+      "source": "https://www.openstreetmap.org/way/1228283264"
+    },
+    {
+      "id": 1228283265,
+      "name": "Pitt House",
+      "group": "",
+      "aliases": [
+        "Pitt House",
+        "Pitt"
+      ],
+      "address": "NW10 0DA",
+      "source": "https://www.openstreetmap.org/way/1228283265"
+    },
+    {
+      "id": 1228283266,
+      "name": "Pitt House",
+      "group": "",
+      "aliases": [
+        "Pitt House",
+        "Pitt"
+      ],
+      "address": "NW10 0DA",
+      "source": "https://www.openstreetmap.org/way/1228283266"
+    },
+    {
+      "id": 1309007505,
+      "name": "The Robinson South",
+      "group": "Robinson",
+      "aliases": [
+        "The Robinson South",
+        "Robinson South"
+      ],
+      "address": "1, Atlantic Crescent, HA9 0TQ",
+      "source": "https://www.openstreetmap.org/way/1309007505"
+    },
+    {
+      "id": 1487827444,
+      "name": "Ramsey House",
+      "group": "",
+      "aliases": [
+        "Ramsey House",
+        "Ramsey"
+      ],
+      "address": "Central Square, HA9 7AH",
+      "source": "https://www.openstreetmap.org/way/1487827444"
+    },
+    {
+      "id": 1487827445,
+      "name": "Moore Court",
+      "group": "",
+      "aliases": [
+        "Moore Court"
+      ],
+      "address": "Station Grove, HA0 4AF",
+      "source": "https://www.openstreetmap.org/way/1487827445"
+    },
+    {
+      "id": 1487986050,
+      "name": "The Assembly at Wembley Central",
+      "group": "",
+      "aliases": [
+        "The Assembly at Wembley Central",
+        "Assembly at Wembley Central"
+      ],
+      "address": "",
+      "source": "https://www.openstreetmap.org/way/1487986050"
+    },
+    {
+      "id": 238999269,
+      "name": "The Helix",
+      "group": "",
+      "aliases": [
+        "The Helix",
+        "Victoria Halls Student Accommodation",
+        "Host Wembley",
+        "Victoria Hall",
+        "Victoria Halls",
+        "Helix"
+      ],
+      "address": "North End Road, HA9 0UU",
+      "source": "https://www.openstreetmap.org/way/238999269"
+    },
+    {
+      "id": 247922180,
+      "name": "Jenga Court",
+      "group": "",
+      "aliases": [
+        "Jenga Court"
+      ],
+      "address": "356-368, High Road, HA9 6BX",
+      "source": "https://www.openstreetmap.org/way/247922180"
+    },
+    {
+      "id": 247922185,
+      "name": "Lanmor House",
+      "group": "",
+      "aliases": [
+        "Lanmor House",
+        "Lanmor"
+      ],
+      "address": "370, High Road Wembley",
+      "source": "https://www.openstreetmap.org/way/247922185"
+    },
+    {
+      "id": 248390686,
+      "name": "Elizabeth House",
+      "group": "",
+      "aliases": [
+        "Elizabeth House",
+        "Elizabeth"
+      ],
+      "address": "341, High Road Wembley, HA9 6AQ",
+      "source": "https://www.openstreetmap.org/way/248390686"
+    },
+    {
+      "id": 261115438,
+      "name": "Forum House",
+      "group": "",
+      "aliases": [
+        "Forum House",
+        "Forum"
+      ],
+      "address": "Empire Way, HA9 0AB",
+      "source": "https://www.openstreetmap.org/way/261115438"
+    },
+    {
+      "id": 542238984,
+      "name": "Cambium",
+      "group": "Emerald Gardens",
+      "aliases": [
+        "Cambium",
+        "Cambium House"
+      ],
+      "address": "Palace Arts Way, HA9 0GH",
+      "source": "https://www.openstreetmap.org/way/542238984"
+    },
+    {
+      "id": 542238987,
+      "name": "Montana",
+      "group": "Emerald Gardens",
+      "aliases": [
+        "Montana",
+        "Montana Building"
+      ],
+      "address": "Exhibition Way, HA9 0FT",
+      "source": "https://www.openstreetmap.org/way/542238987"
+    },
+    {
+      "id": 542238989,
+      "name": "Dakota",
+      "group": "Emerald Gardens",
+      "aliases": [
+        "Dakota",
+        "Dakota Building"
+      ],
+      "address": "Exhibition Way, HA9 0FU",
+      "source": "https://www.openstreetmap.org/way/542238989"
+    },
+    {
+      "id": 542238993,
+      "name": "Cedar",
+      "group": "Emerald Gardens",
+      "aliases": [
+        "Cedar",
+        "Cedar House"
+      ],
+      "address": "Engineers Way, HA9 0FW",
+      "source": "https://www.openstreetmap.org/way/542238993"
+    },
+    {
+      "id": 542238995,
+      "name": "Alto",
+      "group": "Alto",
+      "aliases": [
+        "Alto",
+        "Alto Apartments"
+      ],
+      "address": "Exhibition Way, HA9 0GS",
+      "source": "https://www.openstreetmap.org/way/542238995"
+    },
+    {
+      "id": 542238998,
+      "name": "Vivo",
+      "group": "Alto",
+      "aliases": [
+        "Vivo"
+      ],
+      "address": "6, Harbutt Road, HA9 0GR",
+      "source": "https://www.openstreetmap.org/way/542238998"
+    },
+    {
+      "id": 542239005,
+      "name": "Pienna",
+      "group": "Alto",
+      "aliases": [
+        "Pienna"
+      ],
+      "address": "2, Elvin Gardens, HA9 0GS",
+      "source": "https://www.openstreetmap.org/way/542239005"
+    },
+    {
+      "id": 542239027,
+      "name": "Unite Students - Olympic Way",
+      "group": "Unite Students",
+      "aliases": [
+        "Unite Students - Olympic Way",
+        "Unite Olympic Way",
+        "Olympic Way Student Accommodation"
+      ],
+      "address": "23, Olympic Way, HA9 0FR",
+      "source": "https://www.openstreetmap.org/way/542239027"
+    },
+    {
+      "id": 561808533,
+      "name": "Felda House",
+      "group": "",
+      "aliases": [
+        "Felda House",
+        "Felda"
+      ],
+      "address": "575, North End Road, HA9 0UU",
+      "source": "https://www.openstreetmap.org/way/561808533"
+    },
+    {
+      "id": 561808534,
+      "name": "Scape Wembley",
+      "group": "",
+      "aliases": [
+        "Scape Wembley",
+        "Scape Student Living",
+        "Scape",
+        "Scape House"
+      ],
+      "address": "Fulton Road, HA9 0TF",
+      "source": "https://www.openstreetmap.org/way/561808534"
+    },
+    {
+      "id": 737658351,
+      "name": "Neeld Court",
+      "group": "",
+      "aliases": [
+        "Neeld Court"
+      ],
+      "address": "Neeld Crescent, HA9 6LN",
+      "source": "https://www.openstreetmap.org/way/737658351"
+    },
+    {
+      "id": 737658352,
+      "name": "Neeld Court",
+      "group": "",
+      "aliases": [
+        "Neeld Court"
+      ],
+      "address": "Neeld Crescent, HA9 6LN",
+      "source": "https://www.openstreetmap.org/way/737658352"
+    },
+    {
+      "id": 802334921,
+      "name": "South Meadows",
+      "group": "",
+      "aliases": [
+        "South Meadows"
+      ],
+      "address": "",
+      "source": "https://www.openstreetmap.org/way/802334921"
+    },
+    {
+      "id": 815668412,
+      "name": "17A, Bridge Road",
+      "group": "",
+      "aliases": [
+        "17A, Bridge Road"
+      ],
+      "address": "17A, Bridge Road, HA9 9AB",
+      "source": "https://www.openstreetmap.org/way/815668412"
+    },
+    {
+      "id": 852414419,
+      "name": "Belcanto",
+      "group": "Alto",
+      "aliases": [
+        "Belcanto",
+        "Belcanto Apartments"
+      ],
+      "address": "3, Elvin Gardens, HA9 0GQ",
+      "source": "https://www.openstreetmap.org/way/852414419"
+    },
+    {
+      "id": 852414427,
+      "name": "Landsby West",
+      "group": "Landsby",
+      "aliases": [
+        "Landsby West"
+      ],
+      "address": "10, Elvin Gardens, HA9 0GW",
+      "source": "https://www.openstreetmap.org/way/852414427"
+    },
+    {
+      "id": 852414428,
+      "name": "Landsby East",
+      "group": "Landsby",
+      "aliases": [
+        "Landsby East"
+      ],
+      "address": "6, Weaver Walk, HA9 0LE",
+      "source": "https://www.openstreetmap.org/way/852414428"
+    },
+    {
+      "id": 852502936,
+      "name": "Heward",
+      "group": "Canada Gardens",
+      "aliases": [
+        "Heward",
+        "Heward Building"
+      ],
+      "address": "2, Engineers Way, HA9 0JP",
+      "source": "https://www.openstreetmap.org/way/852502936"
+    },
+    {
+      "id": 852502937,
+      "name": "Lismer",
+      "group": "Canada Gardens",
+      "aliases": [
+        "Lismer",
+        "Lismer Building"
+      ],
+      "address": "2, Engineers Way, HA9 0JP",
+      "source": "https://www.openstreetmap.org/way/852502937"
+    },
+    {
+      "id": 852502938,
+      "name": "Collyer",
+      "group": "Canada Gardens",
+      "aliases": [
+        "Collyer",
+        "Collyer Building"
+      ],
+      "address": "2, Engineers Way, HA9 0JP",
+      "source": "https://www.openstreetmap.org/way/852502938"
+    },
+    {
+      "id": 852502939,
+      "name": "Bowery",
+      "group": "",
+      "aliases": [
+        "Bowery"
+      ],
+      "address": "3, Atlantic Crescent,, HA9 0PZ",
+      "source": "https://www.openstreetmap.org/way/852502939"
+    },
+    {
+      "id": 852502940,
+      "name": "Lexington",
+      "group": "",
+      "aliases": [
+        "Lexington"
+      ],
+      "address": "5, Atlantic Crescent,, HA9 0PQ",
+      "source": "https://www.openstreetmap.org/way/852502940"
+    },
+    {
+      "id": 852502941,
+      "name": "Madison East - Quintain Living",
+      "group": "Madison",
+      "aliases": [
+        "Madison East - Quintain Living",
+        "Madison East"
+      ],
+      "address": "49, Olympic Way, HA9 0NR",
+      "source": "https://www.openstreetmap.org/way/852502941"
+    },
+    {
+      "id": 852502942,
+      "name": "Madison West - Quintain Living",
+      "group": "Madison",
+      "aliases": [
+        "Madison West - Quintain Living",
+        "Madison West"
+      ],
+      "address": "49, Olympic Way, HA9 0NR",
+      "source": "https://www.openstreetmap.org/way/852502942"
+    },
+    {
+      "id": 884947324,
+      "name": "Macdonald House",
+      "group": "",
+      "aliases": [
+        "Macdonald House",
+        "Macdonald"
+      ],
+      "address": "North End Road, HA9 0LU",
+      "source": "https://www.openstreetmap.org/way/884947324"
+    },
+    {
+      "id": 943168953,
+      "name": "Westside Court",
+      "group": "",
+      "aliases": [
+        "Westside Court"
+      ],
+      "address": "",
+      "source": "https://www.openstreetmap.org/way/943168953"
+    },
+    {
+      "id": 963033021,
+      "name": "Cherry House",
+      "group": "Repton Gardens",
+      "aliases": [
+        "Cherry House",
+        "Cherry"
+      ],
+      "address": "1, Wellers Way, HA9 0UJ",
+      "source": "https://www.openstreetmap.org/way/963033021"
+    },
+    {
+      "id": 963033022,
+      "name": "Birch House",
+      "group": "Repton Gardens",
+      "aliases": [
+        "Birch House",
+        "Birch"
+      ],
+      "address": "Harbutt Road, HA9 0GL",
+      "source": "https://www.openstreetmap.org/way/963033022"
+    },
+    {
+      "id": 963034215,
+      "name": "Canvas Wembley - Barnard Point",
+      "group": "Canvas Wembley",
+      "aliases": [
+        "Canvas Wembley - Barnard Point",
+        "Barnard Point",
+        "Canvas Barnard Point",
+        "Canvas Wembley Barnard Point"
+      ],
+      "address": "577, North End Road, HA9 0UU",
+      "source": "https://www.openstreetmap.org/way/963034215"
+    },
+    {
+      "id": 963195123,
+      "name": "Unite Students - Arch View House",
+      "group": "Unite Students",
+      "aliases": [
+        "Unite Students - Arch View House",
+        "Arch View House",
+        "Unite Arch View House",
+        "Unite Students - Arch View",
+        "Arch View",
+        "Unite Arch View"
+      ],
+      "address": "First Way, HA9 0JD",
+      "source": "https://www.openstreetmap.org/way/963195123"
+    },
+    {
+      "id": 1007529390,
+      "name": "Beton",
+      "group": "",
+      "aliases": [
+        "Beton"
+      ],
+      "address": "14, Wembley Park Boulevard, HA9 0SL",
+      "source": "https://www.openstreetmap.org/way/1007529390"
+    },
+    {
+      "id": 1241033279,
+      "name": "Raglan Court",
+      "group": "",
+      "aliases": [
+        "Raglan Court"
+      ],
+      "address": "Empire Way",
+      "source": "https://www.openstreetmap.org/way/1241033279"
+    },
+    {
+      "id": 1308993674,
+      "name": "Aspen House",
+      "group": "Repton Gardens",
+      "aliases": [
+        "Aspen House",
+        "Aspen"
+      ],
+      "address": "Humphry Repton Lane, HA9 0GL",
+      "source": "https://www.openstreetmap.org/way/1308993674"
+    },
+    {
+      "id": 1308997844,
+      "name": "Redwood",
+      "group": "Emerald Gardens",
+      "aliases": [
+        "Redwood",
+        "Redwood House"
+      ],
+      "address": "Engineers Way, HA9 0FX",
+      "source": "https://www.openstreetmap.org/way/1308997844"
+    },
+    {
+      "id": 1308997845,
+      "name": "Maple",
+      "group": "Emerald Gardens",
+      "aliases": [
+        "Maple",
+        "Maple House"
+      ],
+      "address": "Empire Way, HA9 0FY",
+      "source": "https://www.openstreetmap.org/way/1308997845"
+    },
+    {
+      "id": 1308997846,
+      "name": "Pearwood",
+      "group": "Emerald Gardens",
+      "aliases": [
+        "Pearwood",
+        "Pearwood House"
+      ],
+      "address": "Empire Way, HA9 0FZ",
+      "source": "https://www.openstreetmap.org/way/1308997846"
+    },
+    {
+      "id": 1309007504,
+      "name": "The Robinson East",
+      "group": "Robinson",
+      "aliases": [
+        "The Robinson East",
+        "Robinson East"
+      ],
+      "address": "1, Atlantic Crescent, HA9 0TQ",
+      "source": "https://www.openstreetmap.org/way/1309007504"
+    },
+    {
+      "id": 1309008533,
+      "name": "Thomson",
+      "group": "Canada Gardens",
+      "aliases": [
+        "Thomson",
+        "Thomson Building"
+      ],
+      "address": "2, Engineers Way, HA9 0JS",
+      "source": "https://www.openstreetmap.org/way/1309008533"
+    },
+    {
+      "id": 1309008534,
+      "name": "Varley",
+      "group": "Canada Gardens",
+      "aliases": [
+        "Varley",
+        "Varley Building"
+      ],
+      "address": "2, Engineers Way, HA9 0JB",
+      "source": "https://www.openstreetmap.org/way/1309008534"
+    },
+    {
+      "id": 1309008535,
+      "name": "Jackson",
+      "group": "Canada Gardens",
+      "aliases": [
+        "Jackson",
+        "Jackson Building"
+      ],
+      "address": "2, Engineers Way, HA9 0JB",
+      "source": "https://www.openstreetmap.org/way/1309008535"
+    },
+    {
+      "id": 1309008536,
+      "name": "Seath",
+      "group": "Canada Gardens",
+      "aliases": [
+        "Seath",
+        "Seath Building"
+      ],
+      "address": "2, Engineers Way, HA9 0JB",
+      "source": "https://www.openstreetmap.org/way/1309008536"
+    },
+    {
+      "id": 1314249474,
+      "name": "Canvas - Arthur House",
+      "group": "Canvas Wembley",
+      "aliases": [
+        "Canvas - Arthur House",
+        "Arthur House",
+        "Canvas Arthur House",
+        "Canvas Wembley Arthur House",
+        "Canvas - Arthur",
+        "Arthur",
+        "Canvas Arthur",
+        "Canvas Wembley Arthur"
+      ],
+      "address": "1, Rutherford Way, HA9 0BP",
+      "source": "https://www.openstreetmap.org/way/1314249474"
+    },
+    {
+      "id": 1485316190,
+      "name": "Grand Felda House",
+      "group": "",
+      "aliases": [
+        "Grand Felda House",
+        "Grand Felda"
+      ],
+      "address": "Empire Way, HA9 0EF",
+      "source": "https://www.openstreetmap.org/way/1485316190"
+    },
+    {
+      "id": 1487040358,
+      "name": "Achillea House",
+      "group": "",
+      "aliases": [
+        "Achillea House",
+        "Achillea"
+      ],
+      "address": "46, Brook Avenue, HA9 8FR",
+      "source": "https://www.openstreetmap.org/way/1487040358"
+    },
+    {
+      "id": 1487040359,
+      "name": "Galium House",
+      "group": "",
+      "aliases": [
+        "Galium House",
+        "Galium"
+      ],
+      "address": "45, Brook Avenue, HA9 8FS",
+      "source": "https://www.openstreetmap.org/way/1487040359"
+    },
+    {
+      "id": 1487040360,
+      "name": "Pullman House",
+      "group": "",
+      "aliases": [
+        "Pullman House",
+        "Pullman"
+      ],
+      "address": "42, Brook Avenue, HA9 8FY",
+      "source": "https://www.openstreetmap.org/way/1487040360"
+    },
+    {
+      "id": 1487040361,
+      "name": "Wealdstone Court",
+      "group": "",
+      "aliases": [
+        "Wealdstone Court"
+      ],
+      "address": "32, Brook Avenue, HA9 8PQ",
+      "source": "https://www.openstreetmap.org/way/1487040361"
+    },
+    {
+      "id": 1487040362,
+      "name": "Pearce House",
+      "group": "",
+      "aliases": [
+        "Pearce House",
+        "Pearce"
+      ],
+      "address": "30, Brook Avenue, HA9 8PH",
+      "source": "https://www.openstreetmap.org/way/1487040362"
+    },
+    {
+      "id": 1487827447,
+      "name": "2 Oasis Way",
+      "group": "",
+      "aliases": [
+        "2 Oasis Way"
+      ],
+      "address": "1, Oasis Way, HA9 6FH",
+      "source": "https://www.openstreetmap.org/way/1487827447"
+    },
+    {
+      "id": 1487827448,
+      "name": "1 Oasis Way",
+      "group": "",
+      "aliases": [
+        "1 Oasis Way"
+      ],
+      "address": "1, Oasis Way, HA9 6FH",
+      "source": "https://www.openstreetmap.org/way/1487827448"
+    },
+    {
+      "id": 1488023606,
+      "name": "Marigold Apartments",
+      "group": "",
+      "aliases": [
+        "Marigold Apartments",
+        "Marigold"
+      ],
+      "address": "355, High Road Wembley, HA9 6EW",
+      "source": "https://www.openstreetmap.org/way/1488023606"
+    },
+    {
+      "id": 1488023607,
+      "name": "Zinnia Apartments",
+      "group": "",
+      "aliases": [
+        "Zinnia Apartments",
+        "Zinnia"
+      ],
+      "address": "353, High Road Wembley, HA9 6EE",
+      "source": "https://www.openstreetmap.org/way/1488023607"
+    },
+    {
+      "id": 1488023608,
+      "name": "Bluebell Apartments",
+      "group": "",
+      "aliases": [
+        "Bluebell Apartments",
+        "Bluebell"
+      ],
+      "address": "347, High Road Wembley, HA9 6ES",
+      "source": "https://www.openstreetmap.org/way/1488023608"
+    },
+    {
+      "id": 1488023609,
+      "name": "Cosmos Apartment",
+      "group": "",
+      "aliases": [
+        "Cosmos Apartment",
+        "Cosmos"
+      ],
+      "address": "349, High Road Wembley, HA9 6ET",
+      "source": "https://www.openstreetmap.org/way/1488023609"
+    },
+    {
+      "id": 1488023610,
+      "name": "Poppy Apartments",
+      "group": "",
+      "aliases": [
+        "Poppy Apartments",
+        "Poppy"
+      ],
+      "address": "351, High Road Wembley, HA9 6EU",
+      "source": "https://www.openstreetmap.org/way/1488023610"
+    },
+    {
+      "id": 1492947764,
+      "name": "Luna",
+      "group": "",
+      "aliases": [
+        "Luna"
+      ],
+      "address": "4, Marley Street, HA9 0YG",
+      "source": "https://www.openstreetmap.org/way/1492947764"
+    },
+    {
+      "id": 1492947765,
+      "name": "Solar",
+      "group": "",
+      "aliases": [
+        "Solar"
+      ],
+      "address": "3, Marley Street, HA9 0EN",
+      "source": "https://www.openstreetmap.org/way/1492947765"
+    },
+    {
+      "id": 1539879200,
+      "name": "Raglan Court",
+      "group": "",
+      "aliases": [
+        "Raglan Court"
+      ],
+      "address": "Empire Way",
+      "source": "https://www.openstreetmap.org/way/1539879200"
+    },
+    {
+      "id": 1539879201,
+      "name": "Imperial Court",
+      "group": "",
+      "aliases": [
+        "Imperial Court"
+      ],
+      "address": "Empire Way, HA9 0RS",
+      "source": "https://www.openstreetmap.org/way/1539879201"
+    },
+    {
+      "id": 1539879203,
+      "name": "Brookline Building",
+      "group": "Fulton & Fifth",
+      "aliases": [
+        "Brookline Building",
+        "Brookline",
+        "Fulton and Fifth Brookline",
+        "Fulton & Fifth Brookline"
+      ],
+      "address": "49, Fulton Road, HA9 0TF",
+      "source": "https://www.openstreetmap.org/way/1539879203"
+    },
+    {
+      "id": 1539879204,
+      "name": "Elmhurst Building",
+      "group": "Fulton & Fifth",
+      "aliases": [
+        "Elmhurst Building",
+        "Elmhurst"
+      ],
+      "address": "51, Fulton Road, HA9 0ED",
+      "source": "https://www.openstreetmap.org/way/1539879204"
+    },
+    {
+      "id": 1539879205,
+      "name": "Edgewater Building",
+      "group": "Fulton & Fifth",
+      "aliases": [
+        "Edgewater Building",
+        "Edgewater"
+      ],
+      "address": "53, Fulton Road, HA9 0HT",
+      "source": "https://www.openstreetmap.org/way/1539879205"
+    },
+    {
+      "id": 1539879206,
+      "name": "Arlington Building",
+      "group": "Fulton & Fifth",
+      "aliases": [
+        "Arlington Building",
+        "Arlington"
+      ],
+      "address": "7, Fifth Way, HA9 0DF",
+      "source": "https://www.openstreetmap.org/way/1539879206"
+    },
+    {
+      "id": 1539879207,
+      "name": "Queensbrook Building",
+      "group": "Fulton & Fifth",
+      "aliases": [
+        "Queensbrook Building",
+        "Queensbrook"
+      ],
+      "address": "41, Fulton Road, HA9 0DX",
+      "source": "https://www.openstreetmap.org/way/1539879207"
+    },
+    {
+      "id": 1543096708,
+      "name": "Vista",
+      "group": "",
+      "aliases": [
+        "Vista"
+      ],
+      "address": "2, Weaver Walk, HA9 0GY",
+      "source": "https://www.openstreetmap.org/way/1543096708"
+    },
+    {
+      "id": -35131650,
+      "name": "iQ Sterling Court",
+      "group": "",
+      "aliases": [
+        "iQ Sterling Court",
+        "Prodigy Living/ Raffles House",
+        "Sterling Court",
+        "Sterling",
+        "IQ",
+        "I Q",
+        "Raffles House",
+        "iQ Raffles House",
+        "Prodigy Living/ Raffles",
+        "Raffles",
+        "iQ Raffles"
+      ],
+      "address": "6, Lakeside Way, HA9 0BU",
+      "source": "https://www.openstreetmap.org/relation/3513165"
+    },
+    {
+      "id": -129328630,
+      "name": "Tavener House",
+      "group": "",
+      "aliases": [
+        "Tavener House",
+        "Tavener"
+      ],
+      "address": "44, South Way, HA9 0BX",
+      "source": "https://www.openstreetmap.org/relation/12932863"
+    },
+    {
+      "id": -129328640,
+      "name": "Desai House",
+      "group": "",
+      "aliases": [
+        "Desai House",
+        "Desai"
+      ],
+      "address": "48, South Way, HA9 0SS",
+      "source": "https://www.openstreetmap.org/relation/12932864"
+    },
+    {
+      "id": -129328790,
+      "name": "Vantage",
+      "group": "",
+      "aliases": [
+        "Vantage"
+      ],
+      "address": "38, South Way, HA9 0QB",
+      "source": "https://www.openstreetmap.org/relation/12932879"
+    },
+    {
+      "id": -129328930,
+      "name": "Connemara Court",
+      "group": "",
+      "aliases": [
+        "Connemara Court"
+      ],
+      "address": "13, White Horse Square, HA9 0EX",
+      "source": "https://www.openstreetmap.org/relation/12932893"
+    },
+    {
+      "id": -129347680,
+      "name": "Quadrant Court",
+      "group": "",
+      "aliases": [
+        "Quadrant Court"
+      ],
+      "address": "HA9 0BY",
+      "source": "https://www.openstreetmap.org/relation/12934768"
+    },
+    {
+      "id": -129352290,
+      "name": "Alameda",
+      "group": "",
+      "aliases": [
+        "Alameda"
+      ],
+      "address": "48, Olympic Way, HA9 0HS",
+      "source": "https://www.openstreetmap.org/relation/12935229"
+    },
+    {
+      "id": -129438880,
+      "name": "The Robinson West",
+      "group": "Robinson",
+      "aliases": [
+        "The Robinson West",
+        "Robinson West"
+      ],
+      "address": "1, Atlantic Crescent, HA9 0TQ",
+      "source": "https://www.openstreetmap.org/relation/12943888"
+    },
+    {
+      "id": -12932865,
+      "name": "Ferrum 1",
+      "group": "Ferrum",
+      "aliases": [
+        "Ferrum 1"
+      ],
+      "address": "40, South Way, HA9 0HZ",
+      "source": "https://www.openstreetmap.org/relation/12932865"
+    },
+    {
+      "id": -12932880,
+      "name": "Ferrum 3",
+      "group": "Ferrum",
+      "aliases": [
+        "Ferrum 3"
+      ],
+      "address": "40, South Way, HA9 0TD",
+      "source": "https://www.openstreetmap.org/relation/12932880"
+    },
+    {
+      "id": -12932881,
+      "name": "Ferrum 2",
+      "group": "Ferrum",
+      "aliases": [
+        "Ferrum 2"
+      ],
+      "address": "40, South Way, HA9 0HZ",
+      "source": "https://www.openstreetmap.org/relation/12932881"
+    },
+    {
+      "id": 884947323,
+      "name": "Anthology Wembley Parade",
+      "group": "",
+      "aliases": [
+        "Anthology Wembley Parade",
+        "Wembley Parade",
+        "Anthology"
+      ],
+      "address": "",
+      "source": "https://assets.ctfassets.net/plzh9g408oaa/lY6891yUVhjMgYMBOB5Y7/7a646559c84e182aaa5b29325b4d2e43/Anthology_Wembley_Parade_-_Persona_Homes_brochure_-_LQ.pdf"
+    },
+    {
+      "id": -14047588862,
+      "name": "Archery Court",
+      "group": "",
+      "aliases": [
+        "Archery Court"
+      ],
+      "address": "31, Olympic Way, HA9 0FR",
+      "source": "https://www.openstreetmap.org/node/14047588862"
+    }
+  ]
+}

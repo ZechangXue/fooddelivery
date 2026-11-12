@@ -1,0 +1,2 @@
+const esbuild=require('esbuild'),fs=require('fs');
+(async()=>{await esbuild.build({entryPoints:['engine/index.js'],bundle:true,format:'iife',target:'safari16',outfile:'ios/FoodDelivery/engine.js'});await esbuild.build({entryPoints:['engine/worker.js'],bundle:true,format:'iife',target:'safari16',outfile:'ios/FoodDelivery/routeWorker.js'});fs.copyFileSync('public/data/wembley.json','ios/FoodDelivery/wembley.json');})();

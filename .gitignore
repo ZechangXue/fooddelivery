@@ -6,3 +6,8 @@ DerivedData/
 ios/*.xcodeproj/
 .DS_Store
 .env*
+
+artifacts/
+ios/FoodDelivery/engine.js
+ios/FoodDelivery/routeWorker.js
+ios/FoodDelivery/wembley.json
