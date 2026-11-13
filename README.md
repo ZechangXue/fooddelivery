@@ -1,6 +1,6 @@
 # 步送 iOS
 
-个人 Wembley Park 步行配送应用，iOS 16+，iPhone / iPad。原生 UIKit + WKWebView + Core Location，直接连接原配送网站，**不是另一套顾客数据库**。使用网站相同账户登录即可共用顾客、历史、菜单、路线和顾客查询页。
+个人 Wembley Park 步行配送应用，iOS 16+，iPhone / iPad。SwiftUI 原生界面 + Core Location，与原配送网站共用云端 API，**不是另一套顾客数据库**。使用网站相同账户登录即可共用顾客、历史、菜单、路线和顾客查询页。
 
 ## 下载与安装
 
@@ -15,22 +15,24 @@ CI 不保存 Apple ID、证书或客户数据，不需要 Apple Developer 付费
 ## 功能与边界
 
 - 保留网站现有完整业务：离线道路计算、顾客/楼栋、路线优化、送达、饮料零钱清单、历史、菜单、统计、顾客查询同步。
-- 原生定位接入网页 Geolocation API，复制通知使用系统剪贴板；拨号交给电话应用。
+- 四个原生底部标签、独立配送详情、原生表单与选择器；地图由 SwiftUI Canvas 绘制，可缩放、拖动和选入口。
+- Core Location 更新 ETA 和步行里程，复制通知使用系统剪贴板，拨号交给电话应用。
+- 隐藏 WebKit 仅维护原账户会话、访问同源 API 和运行共享算法；登录时显示授权页。主界面不加载网站页面。
 - WebKit 持久 Cookie 保存登录。仅本配送站点可调用原生定位/复制，登录页及第三方页面无权限。
-- 应用需要网络加载网站、登录、读取/保存云端数据和同步查询页。内置的不是一份独立离线网站。
+- 地图、公寓目录及路线/粘贴解析算法内置；登录、读取/保存云端数据和查询页同步需要网络。
 - 配送时保持应用在前台。定位启用期间阻止自动锁屏；手动锁屏或切到后台会暂停定位/同步。这一版**不承诺后台配送追踪**。
 - 第三方账号登录可能限制内嵌浏览器；优先使用原账户邮箱登录。若无法登录，用 Safari 原网站继续配送，并反馈具体登录错误。尚未完成真实账户真机登录验收。
 - IPA 编译和模拟器测试通过不等于真机安装/GPS/登录都验证过。
 
 ## 微信粘贴
 
-配套网站解析器会过滤独立一行的 `发送人 (昵称):` 标题，保留客户姓名、电话、地址和备注；处理 NBSP、CRLF、全角冒号、邮编紧邻姓名等情况。仓库 lib 保存同版本解析器供测试；实际应用使用云端发布版本。
+配套网站解析器会过滤独立一行的 `发送人 (昵称):` 标题，保留客户姓名、电话、地址和备注；处理 NBSP、CRLF、全角冒号、邮编紧邻姓名等情况。仓库 lib 中的共享解析器打包进原生应用，不依赖 LLM API。
 
 ## 测试
 
 `npm ci && npm test`：历史 14 条、4 条、手机 5 条（多种格式）以及原生 JS 桥定位/错误/超时/复制/来源限制。
 
-GitHub Actions：上述测试 → iOS Simulator XCTest（域名策略、拨号策略、资源）→ Release iphoneos 构建 → IPA。
+GitHub Actions：上述测试及 400 组路线回归 → 打包共享算法 → iOS Simulator XCTest（数据模型、域名策略、资源、原生页面交互）→ Release iphoneos 构建 → IPA。页面截图与 xcresult 保存在 Test-results artifact。
 
 真机验收清单：
 
@@ -42,7 +44,7 @@ GitHub Actions：上述测试 → iOS Simulator XCTest（域名策略、拨号�
 - 顾客查询页能看到相同位置和 ETA，不能看到完整路线。
 - Sideloadly 覆盖更新后登录/数据无损。
 
-开发：macOS + Xcode + XcodeGen，运行 `cd ios && xcodegen generate`，打开生成工程。Windows 可修改代码并通过 Actions 编译；无法在 Windows 运行 iOS 模拟器。
+开发：macOS + Xcode + XcodeGen，先运行 `npm ci && npm run build:engine`，再运行 `cd ios && xcodegen generate`，打开生成工程。Windows 可修改代码并通过 Actions 编译；无法在 Windows 运行 iOS 模拟器。
 
 ## 数据与素材
 

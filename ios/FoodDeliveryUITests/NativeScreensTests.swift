@@ -16,7 +16,9 @@ final class NativeScreensTests:XCTestCase {
         app.tabBars.buttons["每日配送"].tap()
         let route=app.buttons.matching(NSPredicate(format:"label CONTAINS %@", "查看全部")).firstMatch
         for _ in 0..<5 {if route.exists && route.isHittable {break};app.swipeUp()}
-        if route.exists {route.tap();XCTAssertTrue(app.staticTexts["今日需带 2 瓶饮料"].waitForExistence(timeout:5));capture("05-route")}
+        XCTAssertTrue(route.exists, "配送详情入口必须存在")
+        guard route.exists else {return}
+        route.tap();XCTAssertTrue(app.staticTexts["今日需带 2 瓶饮料"].waitForExistence(timeout:5));capture("05-route")
     }
     func capture(_ name:String){let attachment=XCTAttachment(screenshot:XCUIScreen.main.screenshot());attachment.name=name;attachment.lifetime = .keepAlways;add(attachment)}
 }
