@@ -10,6 +10,10 @@ jobs:
     runs-on: macos-15
     timeout-minutes: 35
     steps:
+      # Xcode 16.4 / iOS 18.5 has a known libswiftWebKit simulator loader bug.
+      # https://bugs.webkit.org/show_bug.cgi?id=293831
+      - name: Select tested Xcode runtime
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -26,7 +30,7 @@ jobs:
           cd ios && xcodegen generate
       - name: Pick installed iPhone simulator
         run: |
-          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(v["udid"] for group in d["devices"].values() for v in group if v["isAvailable"] and v["name"].startswith("iPhone")))')
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(v["udid"] for runtime,group in d["devices"].items() if runtime.endswith("iOS-18-2") for v in group if v["isAvailable"] and v["name"].startswith("iPhone")))')
           echo "SIMULATOR_ID=$DEVICE" >> "$GITHUB_ENV"
       - name: iOS simulator tests
         run: |
