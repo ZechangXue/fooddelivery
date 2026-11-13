@@ -23,11 +23,11 @@ struct NativeRoot:View {
 struct Brand:View {var body:some View{HStack{Image(systemName:"figure.walk").font(.title).foregroundColor(Theme.lime).frame(width:46,height:46).background(Theme.ink,in:RoundedRectangle(cornerRadius:14));VStack(alignment:.leading){Text("步送").font(.title2.bold());Text("WEMBLEY PARK").font(.system(size:9,weight:.bold)).tracking(2)};Spacer();Text("步行 · 楼下交接").font(.caption).padding(10).background(Theme.lime.opacity(0.25),in:Capsule())}.foregroundColor(Theme.ink)}}
 struct TodayView:View {
     @EnvironmentObject var s:NativeStore
-    @State var menu=false,settings=false,add=false,paste=false
+    @State var menu=false;@State var settings=false;@State var add=false;@State var paste=false
     var body:some View {
         ScrollView{VStack(spacing:16){
             Brand();VStack(alignment:.leading,spacing:4){Text("你的邻里配送助手").foregroundStyle(.secondary).font(.subheadline);Text("把每一餐，顺路送到。").font(.title2.bold())}.frame(maxWidth:.infinity,alignment:.leading)
-            if !s.ready {Card{Text("连接你的配送账户").font(.headline);Text("与网页共用顾客、菜单和配送记录。").foregroundStyle(.secondary);MainButton(title:"登录 / 重新连接",icon:"person.crop.circle"){s.beginLogin()}}}
+            if !s.connected {Card{Text("连接你的配送账户").font(.headline);Text("与网页共用顾客、菜单和配送记录。").foregroundStyle(.secondary);MainButton(title:"登录 / 重新连接",icon:"person.crop.circle"){s.beginLogin()}}}
             else {
                 Card{HStack{Label("当日菜单",systemImage:"fork.knife").font(.headline);Spacer();Button("修改菜单"){menu=true}};Text(s.state["menus"].list.first{$0["date"].text==s.day["date"].text}?["dishes"].list.map{$0["name"].text}.joined(separator:" + ") ?? "尚未记录菜单").font(.subheadline).foregroundStyle(.secondary)}
                 Card{
@@ -61,7 +61,7 @@ struct OrderRow:View { @EnvironmentObject var s:NativeStore;let order:J
 }
 struct SettingsSheet:View {
     @EnvironmentObject var s:NativeStore;@Environment(\.dismiss) var dismiss
-    @State var origin="",date=Date(),departure=Date(),speed=4.5,round=false
+    @State var origin="";@State var date=Date();@State var departure=Date();@State var speed=4.5;@State var round=false
     var body:some View{NavigationStack{Form{Section("出发设置"){Picker("出发点",selection:$origin){Text("请选择").tag("");ForEach(s.buildings){b in Text(s.label(b.id)).tag(b.id)}};DatePicker("配送日期",selection:$date,displayedComponents:.date);DatePicker("出发时间",selection:$departure,displayedComponents:.hourAndMinute);Stepper(value:$speed,in:2...7,step:0.5){Text(String(format:"步行速度 %.1f 公里/小时",speed))};Toggle("考虑送完后的回程",isOn:$round)};Section{Text("每栋楼停留 2 分钟，同楼多位顾客只计算一次。").font(.footnote)}}.navigationTitle("出发设置").toolbar{ToolbarItem(placement:.cancellationAction){Button("取消"){dismiss()}};ToolbarItem(placement:.confirmationAction){Button("保存"){s.perform{if londonDate(date) != s.day["date"].text{try await s.chooseDate(londonDate(date))};let f=DateFormatter();f.timeZone=TimeZone(identifier:"Europe/London");f.dateFormat="HH:mm";try await s.edit(["originId":str(origin),"departure":str(f.string(from:departure)),"speed":num(speed),"roundTrip":.bool(round)]);try await s.saveDay(s.day);dismiss()}}.disabled(s.busy)}}.onAppear{origin=s.day["originId"].text;date=dateValue(s.day["date"].text);speed=s.day["speed"].double;round=s.day["roundTrip"].flag;let f=DateFormatter();f.timeZone=TimeZone(identifier:"Europe/London");f.dateFormat="HH:mm";departure=f.date(from:s.day["departure"].text) ?? Date()}}}
 }
 struct MenuSheet:View { @EnvironmentObject var s:NativeStore;@Environment(\.dismiss) var dismiss;@State var text=""
