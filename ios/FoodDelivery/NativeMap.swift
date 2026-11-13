@@ -27,6 +27,20 @@ struct NativeMap:View {
                         else if f.t["leisure"] != nil || f.t["landuse"] == "grass" {path.closeSubpath();context.fill(path,with:.color(Color(red:0.81,green:0.88,blue:0.73)))}
                         else if f.t["highway"] != nil {context.stroke(path,with:.color(.white),lineWidth:max(2,3*scale))}
                     }
+                    // Keep nearby apartment and street names legible without overlapping labels.
+                    var labelRects:[CGRect]=[]
+                    for f in MapCache.shared.features where !f.p.isEmpty {
+                        guard let name=f.t["name"], !name.isEmpty,
+                              f.t["building"] != nil || f.t["highway"] != nil else {continue}
+                        let lng=f.p.reduce(0){$0+$1[0]}/Double(f.p.count)
+                        let lat=f.p.reduce(0){$0+$1[1]}/Double(f.p.count)
+                        let point=pt(lng,lat)
+                        let bounds=CGRect(x:point.x-44,y:point.y-9,width:88,height:18)
+                        guard CGRect(origin:.zero,size:size).contains(point),
+                              !labelRects.contains(where:{$0.intersects(bounds)}) else {continue}
+                        labelRects.append(bounds)
+                        context.draw(Text(String(name.prefix(30))).font(.system(size:8)).foregroundColor(Color.black.opacity(0.55)),at:point)
+                    }
                     let coords=geometry.list;var route=Path();for(i,p) in coords.enumerated(){guard p.list.count==2 else{continue};let point=pt(p.list[0].double,p.list[1].double);if i==0{route.move(to:point)}else{route.addLine(to:point)}}
                     context.stroke(route,with:.color(.blue),style:StrokeStyle(lineWidth:4,lineCap:.round,lineJoin:.round))
                     for(i,s) in stops.enumerated(){let b=s["building"].exists ? s["building"]:s;let point=pt(b["lng"].double,b["lat"].double);let circle=CGRect(x:point.x-12,y:point.y-12,width:24,height:24);context.fill(Path(ellipseIn:circle),with:.color(Theme.ink));context.stroke(Path(ellipseIn:circle),with:.color(.white),lineWidth:2);context.draw(Text("\(i+1)").font(.system(size:11,weight:.bold)).foregroundColor(.white),at:point)}

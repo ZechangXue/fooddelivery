@@ -13,7 +13,7 @@ jobs:
       # Xcode 16.4 / iOS 18.5 has a known libswiftWebKit simulator loader bug.
       # https://bugs.webkit.org/show_bug.cgi?id=293831
       - name: Select tested Xcode runtime
-        run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+        run: sudo xcode-select -s /Applications/Xcode_16.4.app/Contents/Developer
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
@@ -30,12 +30,14 @@ jobs:
           cd ios && xcodegen generate
       - name: Pick installed iPhone simulator
         run: |
-          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(v["udid"] for runtime,group in d["devices"].items() if runtime.endswith("iOS-18-2") for v in group if v["isAvailable"] and v["name"].startswith("iPhone")))')
+          DEVICE=$(xcrun simctl list devices available -j | python3 -c 'import json,sys; d=json.load(sys.stdin); print(next(v["udid"] for group in d["devices"].values() for v in group if v["isAvailable"] and v["name"].startswith("iPhone")))')
           echo "SIMULATOR_ID=$DEVICE" >> "$GITHUB_ENV"
+      # WebKit bug 293831 workaround applies ONLY to simulator tests.
+      # Release device builds retain the iOS 16 minimum from project.yml.
       - name: iOS simulator tests
         run: |
           set -o pipefail
-          xcodebuild test -parallel-testing-enabled NO -project ios/FoodDelivery.xcodeproj -scheme FoodDelivery -destination "platform=iOS Simulator,id=$SIMULATOR_ID" -derivedDataPath build/simulator -resultBundlePath build/Tests.xcresult CODE_SIGNING_ALLOWED=NO | tee build-tests.log
+          xcodebuild test -parallel-testing-enabled NO -project ios/FoodDelivery.xcodeproj -scheme FoodDelivery -destination "platform=iOS Simulator,id=$SIMULATOR_ID" -derivedDataPath build/simulator -resultBundlePath build/Tests.xcresult IPHONEOS_DEPLOYMENT_TARGET=18.4 CODE_SIGNING_ALLOWED=NO | tee build-tests.log
       - name: Export simulator screenshots
         if: always()
         run: |
