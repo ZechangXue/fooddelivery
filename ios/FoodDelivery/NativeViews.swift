@@ -2,7 +2,7 @@ import SwiftUI
 
 struct Theme {static let ink=Color(red:0.055,green:0.10,blue:0.18);static let lime=Color(red:0.80,green:0.94,blue:0.25);static let background=Color(red:0.95,green:0.96,blue:0.98)}
 struct Card<Content:View>:View {let content:Content;init(@ViewBuilder content:()->Content){self.content=content()};var body:some View{VStack(alignment:.leading,spacing:14){content}.padding(16).frame(maxWidth:.infinity,alignment:.leading).background(.white,in:RoundedRectangle(cornerRadius:22)).overlay(RoundedRectangle(cornerRadius:22).stroke(Color.black.opacity(0.04))).shadow(color:.black.opacity(0.025),radius:6,y:2)}}
-struct MainButton:View {let title:String;var icon="figure.walk";let action:()->Void;var body:some View{Button(action:action){Label(title,systemImage:icon).font(.headline).frame(maxWidth:.infinity).padding(17).foregroundColor(.white).background(Theme.ink,in:RoundedRectangle(cornerRadius:17))}.buttonStyle(.plain)}}
+struct MainButton:View {@Environment(\.isEnabled) private var enabled;let title:String;var icon="figure.walk";let action:()->Void;var body:some View{Button(action:action){Label(title,systemImage:icon).font(.headline).frame(maxWidth:.infinity).padding(17).foregroundColor(.white).background(Theme.ink,in:RoundedRectangle(cornerRadius:17))}.buttonStyle(.plain).opacity(enabled ? 1:0.45)}}
 struct NativeRoot:View {
     @StateObject var store=NativeStore()
     var body:some View{
@@ -41,7 +41,7 @@ struct TodayView:View {
                 Card{
                     HStack{Label("本趟顾客",systemImage:"person.2").font(.headline);Spacer();Text("\(s.day["orders"].list.count) 位").foregroundStyle(.secondary);Button{add=true}label:{Image(systemName:"plus.circle.fill").font(.title2)}}
                     Button{paste=true}label:{Label("粘贴微信顾客信息",systemImage:"doc.on.clipboard").frame(maxWidth:.infinity,alignment:.leading).padding(12).background(Color.blue.opacity(0.07),in:RoundedRectangle(cornerRadius:12))}
-                    ForEach(s.day["orders"].list,id:\.self){order in OrderRow(order:order)}
+                    NavigationLink {OrdersView()} label:{HStack{Text("查看本趟顾客 · \(s.day["orders"].list.reduce(0){$0+$1["quantity"].int}) 盒");Spacer();Image(systemName:"chevron.right")}}
                     if !s.day["orders"].list.isEmpty {MainButton(title:s.day["plan"].exists ? "更新步行路线":"规划步行路线",icon:"point.topleft.down.curvedto.point.bottomright.up"){s.perform{try await s.plan()}}}
                     if s.dirty {Button("保存配送单"){s.perform{try await s.saveDay(s.day)}}.frame(maxWidth:.infinity)}
                 }
@@ -56,7 +56,7 @@ struct TodayView:View {
 }
 struct NumberBadge:View {let number:Int;var body:some View{Text(String(format:"%02d",number)).font(.subheadline.bold()).foregroundColor(Theme.lime).frame(width:34,height:34).background(Theme.ink,in:Circle())}}
 struct OrderRow:View { @EnvironmentObject var s:NativeStore;let order:J
-    var body:some View{let c=s.customer(order["customerId"].text);VStack(alignment:.leading,spacing:7){HStack{VStack(alignment:.leading){Text(c["name"].text).bold();Text(s.label(c["buildingId"].text)).font(.caption).foregroundStyle(.secondary)};Spacer();Text("\(order["quantity"].int) 盒");Menu{Button("增加一盒"){change(1)};Button("减少一盒"){change(-1)};Button("移除顾客",role:.destructive){s.perform{try await s.edit(["orders":.array(s.day["orders"].list.filter{$0["customerId"] != order["customerId"]})])}}}label:{Image(systemName:"ellipsis.circle").padding(8)}};if !c["note"].text.isEmpty{Text(c["note"].text).font(.caption).foregroundStyle(.secondary)};Divider()}}
+    var body:some View{let c=s.customer(order["customerId"].text);VStack(alignment:.leading,spacing:7){HStack{VStack(alignment:.leading){Text(c["name"].text).bold();Text(s.label(c["buildingId"].text)).font(.caption).foregroundStyle(.secondary)};Spacer();Text("\(order["quantity"].int) 盒");Menu{Button("增加一盒"){change(1)};Button("减少一盒"){change(-1)};Button("移除顾客",role:.destructive){s.perform{try await s.edit(["orders":.array(s.day["orders"].list.filter{$0["customerId"] != order["customerId"]})])}}}label:{Image(systemName:"ellipsis.circle").padding(8)}};PhoneLink(phone:c["phone"].text);if !c["note"].text.isEmpty{Text(c["note"].text).font(.caption).foregroundStyle(.secondary)};Divider()}}
     func change(_ count:Int){s.perform{let orders=s.day["orders"].list.map{$0["customerId"]==order["customerId"] ? $0.setting("quantity",num(Double(max(0,min(99,$0["quantity"].int+count))))):$0};try await s.edit(["orders":.array(orders)])}}
 }
 struct SettingsSheet:View {
@@ -68,3 +68,30 @@ struct MenuSheet:View { @EnvironmentObject var s:NativeStore;@Environment(\.dism
     var body:some View{NavigationStack{Form{Section("粘贴当天菜单"){TextEditor(text:$text).frame(minHeight:180);Text("例如：红烧肉 + 炖排骨 + 西葫芦炒蛋").font(.caption).foregroundStyle(.secondary)}}.navigationTitle("当日菜单").toolbar{ToolbarItem(placement:.cancellationAction){Button("取消"){dismiss()}};ToolbarItem(placement:.confirmationAction){Button("保存"){s.perform{let menu=try await s.call("menu",obj(["text":str(text),"date":s.day["date"]]));try await s.save("menu",menu);dismiss()}}.disabled(text.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty || s.busy)}}.onAppear{text=s.state["menus"].list.first{$0["date"]==s.day["date"]}?["raw"].text ?? ""}}}
 }
 struct AddOrderSheet:View {@EnvironmentObject var s:NativeStore;@Environment(\.dismiss) var dismiss;@State var search="";var body:some View{NavigationStack{List(s.customers.filter{search.isEmpty || ($0["name"].text+$0["phone"].text+s.label($0["buildingId"].text)).localizedCaseInsensitiveContains(search)}){c in Button{s.perform{var orders=s.day["orders"].list;if let index=orders.firstIndex(where:{$0["customerId"].text==c.id}){orders[index]["quantity"]=num(Double(orders[index]["quantity"].int+1))}else{orders.append(obj(["customerId":str(c.id),"quantity":num(1)]))};try await s.edit(["orders":.array(orders)]);dismiss()}}label:{VStack(alignment:.leading){Text(c["name"].text);Text(s.label(c["buildingId"].text)).font(.caption).foregroundStyle(.secondary)}}}.searchable(text:$search,prompt:"搜索姓名、电话或公寓").navigationTitle("添加常客").toolbar{Button("完成"){dismiss()}}}}}
+
+struct OrdersView:View {
+    @EnvironmentObject var s:NativeStore
+    @State private var add=false
+    @State private var paste=false
+    var body:some View {
+        ScrollView {
+            VStack(spacing:16) {
+                Card {
+                    Button {paste=true} label:{Label("粘贴微信顾客信息",systemImage:"doc.on.clipboard")}
+                    ForEach(s.day["orders"].list,id:\.self) {order in OrderRow(order:order)}
+                    if s.day["orders"].list.isEmpty {Text("本趟还没有顾客").foregroundStyle(.secondary)}
+                }
+                if !s.day["orders"].list.isEmpty {
+                    MainButton(title:"更新步行路线",icon:"map") {s.perform{try await s.plan()}}
+                }
+                if s.dirty {Button("保存配送单"){s.perform{try await s.saveDay(s.day)}}}
+            }.padding(16)
+        }
+        .background(Theme.background)
+        .navigationTitle("本趟顾客 \(s.day["orders"].list.count) 位")
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {Button {add=true} label:{Label("添加常客",systemImage:"plus")}}
+        .sheet(isPresented:$add){AddOrderSheet().environmentObject(s)}
+        .sheet(isPresented:$paste){PasteSheet().environmentObject(s)}
+    }
+}
