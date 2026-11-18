@@ -3,6 +3,33 @@ import SwiftUI
 struct OfflineFeature:Decodable {let t:[String:String];let p:[[Double]]}
 struct OfflineMapData:Decodable {let features:[OfflineFeature]}
 final class MapCache {static let shared=MapCache();let features:[OfflineFeature];init(){if let url=Bundle.main.url(forResource:"wembley",withExtension:"json"),let data=try? Data(contentsOf:url),let map=try? JSONDecoder().decode(OfflineMapData.self,from:data){features=map.features}else{features=[]}}}
+// One metres-to-points scale for both axes, including tap-to-coordinate conversion.
+struct MapProjection {
+    let center:CGPoint
+    let size:CGSize
+    let factor:Double
+    let zoom:Double
+    let offset:CGSize
+    static let longitudeMetres=111195.0*cos(51.56*Double.pi/180)
+    init(points:[CGPoint],size:CGSize,zoom:Double=1,offset:CGSize = .zero) {
+        let points=points.isEmpty ? [CGPoint(x:-0.290,y:51.550),CGPoint(x:-0.269,y:51.565)]:points
+        let xs=points.map(\.x),ys=points.map(\.y)
+        let west=xs.min()!,east=xs.max()!,south=ys.min()!,north=ys.max()!
+        center=CGPoint(x:(west+east)/2,y:(south+north)/2)
+        self.size=size;self.zoom=zoom;self.offset=offset
+        let width=max(300,(east-west)*Self.longitudeMetres)
+        let height=max(300,(north-south)*111195)
+        factor=min(max(1,size.width-88)/width,max(1,size.height-88)/height)
+    }
+    func point(_ lng:Double,_ lat:Double)->CGPoint {
+        CGPoint(x:size.width/2+(lng-center.x)*Self.longitudeMetres*factor*zoom+offset.width,
+                y:size.height/2-(lat-center.y)*111195*factor*zoom+offset.height)
+    }
+    func coordinate(_ p:CGPoint)->CGPoint {
+        CGPoint(x:center.x+(p.x-size.width/2-offset.width)/(Self.longitudeMetres*factor*zoom),
+                y:center.y-(p.y-size.height/2-offset.height)/(111195*factor*zoom))
+    }
+}
 struct NativeMap:View {
     var stops:[J]=[]
     var geometry:J = .array([])
@@ -13,13 +40,22 @@ struct NativeMap:View {
     @State private var savedScale:CGFloat=1
     @State private var offset=CGSize.zero
     @State private var savedOffset=CGSize.zero
-    private let west = -0.290, east = -0.269, south=51.550, north=51.565
+    private var fitPoints:[CGPoint] {
+        var points=geometry.list.compactMap {p -> CGPoint? in guard p.list.count==2 else{return nil};return CGPoint(x:p.list[0].double,y:p.list[1].double)}
+        points += stops.map {s in let b=s["building"].exists ? s["building"]:s;return CGPoint(x:b["lng"].double,y:b["lat"].double)}
+        if pin.exists {points.append(CGPoint(x:pin["lng"].double,y:pin["lat"].double))}
+        return points
+    }
+    private func mapControl(_ icon:String,label:String,action:@escaping ()->Void)->some View {
+        Button(action:action){Image(systemName:icon).font(.system(size:17,weight:.semibold)).frame(width:44,height:44).contentShape(Rectangle())}.buttonStyle(.plain).accessibilityLabel(label)
+    }
     var body:some View {
         GeometryReader{proxy in
             let size=proxy.size
+            let projection=MapProjection(points:fitPoints,size:size,zoom:Double(scale),offset:offset)
             ZStack(alignment:.bottomLeading){
                 Canvas{context,size in
-                    func pt(_ lng:Double,_ lat:Double)->CGPoint {CGPoint(x:((lng-west)/(east-west)*size.width-size.width/2)*scale+size.width/2+offset.width,y:((north-lat)/(north-south)*size.height-size.height/2)*scale+size.height/2+offset.height)}
+                    func pt(_ lng:Double,_ lat:Double)->CGPoint {projection.point(lng,lat)}
                     context.fill(Path(CGRect(origin:.zero,size:size)),with:.color(Color(red:0.94,green:0.95,blue:0.92)))
                     for f in MapCache.shared.features {
                         guard f.p.count>1 else{continue};var path=Path();for (i,p) in f.p.enumerated(){if i==0{path.move(to:pt(p[0],p[1]))}else{path.addLine(to:pt(p[0],p[1]))}}
@@ -39,7 +75,7 @@ struct NativeMap:View {
                         guard CGRect(origin:.zero,size:size).contains(point),
                               !labelRects.contains(where:{$0.intersects(bounds)}) else {continue}
                         labelRects.append(bounds)
-                        context.draw(Text(String(name.prefix(30))).font(.system(size:8)).foregroundColor(Color.black.opacity(0.55)),at:point)
+                        context.draw(Text(String(name.prefix(30))).font(.system(size:10)).foregroundColor(Color.black.opacity(0.70)),at:point)
                     }
                     let coords=geometry.list;var route=Path();for(i,p) in coords.enumerated(){guard p.list.count==2 else{continue};let point=pt(p.list[0].double,p.list[1].double);if i==0{route.move(to:point)}else{route.addLine(to:point)}}
                     context.stroke(route,with:.color(.blue),style:StrokeStyle(lineWidth:4,lineCap:.round,lineJoin:.round))
@@ -48,9 +84,17 @@ struct NativeMap:View {
                 }
                 .gesture(DragGesture().onChanged{v in offset=CGSize(width:savedOffset.width+v.translation.width,height:savedOffset.height+v.translation.height)}.onEnded{_ in savedOffset=offset})
                 .simultaneousGesture(MagnificationGesture().onChanged{value in scale=min(12,max(0.4,savedScale*value))}.onEnded{_ in savedScale=scale})
-                .simultaneousGesture(SpatialTapGesture().onEnded{v in let x=((v.location.x-size.width/2-offset.width)/scale+size.width/2)/size.width;let y=((v.location.y-size.height/2-offset.height)/scale+size.height/2)/size.height;onPick?(west+x*(east-west),north-y*(north-south))})
+                .simultaneousGesture(SpatialTapGesture().onEnded{v in let coordinate=projection.coordinate(v.location);onPick?(coordinate.x,coordinate.y)})
                 Text("© OpenStreetMap contributors · 离线地图").font(.system(size:9)).padding(4).background(.white.opacity(0.85)).allowsHitTesting(false)
-                VStack{HStack{Spacer();VStack{Button{scale=min(12,scale*1.5);savedScale=scale}label:{Image(systemName:"plus")};Divider();Button{scale=max(0.4,scale/1.5);savedScale=scale}label:{Image(systemName:"minus")};Divider();Button{scale=1;savedScale=1;offset = .zero;savedOffset = .zero}label:{Image(systemName:"house")}}.padding(12).background(.white,in:RoundedRectangle(cornerRadius:12)).padding(8)};Spacer()}
+                VStack(spacing:0) {
+                    mapControl("plus",label:"放大地图"){scale=min(12,scale*1.5);savedScale=scale}
+                    Divider().frame(width:30)
+                    mapControl("minus",label:"缩小地图"){scale=max(0.4,scale/1.5);savedScale=scale}
+                    Divider().frame(width:30)
+                    mapControl("arrow.up.left.and.arrow.down.right",label:"显示完整路线"){scale=1;savedScale=1;offset = .zero;savedOffset = .zero}
+                }.frame(width:44).background(.white,in:RoundedRectangle(cornerRadius:12))
+                 .shadow(color:.black.opacity(0.15),radius:4,y:2)
+                 .padding(10).frame(maxWidth:.infinity,maxHeight:.infinity,alignment:.topTrailing)
             }.clipped().clipShape(RoundedRectangle(cornerRadius:16))
         }.accessibilityLabel("Wembley Park 配送地图")
     }

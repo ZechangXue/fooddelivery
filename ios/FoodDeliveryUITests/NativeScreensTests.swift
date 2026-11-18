@@ -19,6 +19,15 @@ final class NativeScreensTests:XCTestCase {
         XCTAssertTrue(route.exists, "配送详情入口必须存在")
         guard route.exists else {return}
         route.tap();XCTAssertTrue(app.staticTexts["今日需带 2 瓶饮料"].waitForExistence(timeout:5));capture("05-route")
+        app.buttons["查看地图"].tap()
+        XCTAssertTrue(app.buttons["放大地图"].waitForExistence(timeout:5))
+        let zoom=app.buttons["放大地图"]
+        XCTAssertLessThanOrEqual(zoom.frame.width,48)
+        XCTAssertGreaterThanOrEqual(zoom.frame.height,44)
+        capture("06-map")
+        zoom.tap()
+        app.buttons["显示完整路线"].tap()
+        capture("07-map-fit")
     }
     func capture(_ name:String){let attachment=XCTAttachment(screenshot:XCUIScreen.main.screenshot());attachment.name=name;attachment.lifetime = .keepAlways;add(attachment)}
 }
