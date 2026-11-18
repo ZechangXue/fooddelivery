@@ -14,20 +14,22 @@ struct MapProjection {
     init(points:[CGPoint],size:CGSize,zoom:Double=1,offset:CGSize = .zero) {
         let points=points.isEmpty ? [CGPoint(x:-0.290,y:51.550),CGPoint(x:-0.269,y:51.565)]:points
         let xs=points.map(\.x),ys=points.map(\.y)
-        let west=xs.min()!,east=xs.max()!,south=ys.min()!,north=ys.max()!
+        let west=Double(xs.min()!),east=Double(xs.max()!),south=Double(ys.min()!),north=Double(ys.max()!)
         center=CGPoint(x:(west+east)/2,y:(south+north)/2)
         self.size=size;self.zoom=zoom;self.offset=offset
-        let width=max(300,(east-west)*Self.longitudeMetres)
-        let height=max(300,(north-south)*111195)
-        factor=min(max(1,size.width-88)/width,max(1,size.height-88)/height)
+        let width:Double=max(300.0,(east-west)*Self.longitudeMetres)
+        let height:Double=max(300.0,(north-south)*111195)
+        factor=min(max(1.0,Double(size.width)-88.0)/width,max(1.0,Double(size.height)-88.0)/height)
     }
     func point(_ lng:Double,_ lat:Double)->CGPoint {
-        CGPoint(x:size.width/2+(lng-center.x)*Self.longitudeMetres*factor*zoom+offset.width,
-                y:size.height/2-(lat-center.y)*111195*factor*zoom+offset.height)
+        let x=Double(size.width)/2+(lng-Double(center.x))*Self.longitudeMetres*factor*zoom+Double(offset.width)
+        let y=Double(size.height)/2-(lat-Double(center.y))*111195*factor*zoom+Double(offset.height)
+        return CGPoint(x:x,y:y)
     }
     func coordinate(_ p:CGPoint)->CGPoint {
-        CGPoint(x:center.x+(p.x-size.width/2-offset.width)/(Self.longitudeMetres*factor*zoom),
-                y:center.y-(p.y-size.height/2-offset.height)/(111195*factor*zoom))
+        let x=Double(center.x)+(Double(p.x)-Double(size.width)/2-Double(offset.width))/(Self.longitudeMetres*factor*zoom)
+        let y=Double(center.y)-(Double(p.y)-Double(size.height)/2-Double(offset.height))/(111195*factor*zoom)
+        return CGPoint(x:x,y:y)
     }
 }
 struct NativeMap:View {
